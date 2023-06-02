@@ -1,14 +1,16 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import mysql.connector
 
 app = Flask(__name__)
+CORS(app)
 
 # Configurações do banco de dados
 db_config = {
-    'user': 'root',
-    'password': '',
-    'host': 'localhost',
-    'database': 'fitverse',
+    'user': 'rootfitverse',
+    'password': 'My@sql15',
+    'host': 'db4free.net',
+    'database': 'projetofitverse',
     'raise_on_warnings': True
 }
 
@@ -54,7 +56,7 @@ def obter_usuarios():
     cursor.close()
     cnx.close()
 
-    return jsonify(usuarios)
+    return jsonify(users)
 
 # Rota para atualizar um registro existente
 @app.route('/api/user/<int:id>', methods=['PUT'])
